@@ -1,0 +1,61 @@
+<div class="md-dialog-container" id="widgetParams">
+    <md-dialog layout-padding class="adaptable-dialog" aria-label="Widget List">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Parameters</h2>
+                <span flex></span>
+                <md-button aria-label="Close" class="md-icon-button" ng-click="hideDialog()">
+                    <ng-md-icon icon="close"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <!--PARAMS STATEMENTS-->
+            <form name="widgetParmeters" flex-gt-xs>
+                <div ng-repeat="param in selectedWidget.params">
+
+                    <!--DATE-->
+                    <md-input-container ng-if="param.type=='date'">
+                        <label>{{param.displayText}}</label>
+                        <md-datepicker ng-model="param.value"></md-datepicker>
+                    </md-input-container>
+
+                    <!--TEXT-->
+                    <md-input-container ng-if="param.type=='text'" class="md-block" flex-gt-sm>
+                        <label>{{param.displayText}}</label>
+                        <input ng-model="param.value">
+                    </md-input-container>
+
+                    <!--CHIP-->
+                    <md-chips ng-if="param.type=='chip'"
+                              ng-init="param.value = []"
+                              ng-model="param.value"
+                              readonly="false"
+                              md-removable="true"
+                              placeholder="{{param.displayText}}"
+                              delete-button-label="Remove Tag"
+                              delete-hint="Press delete to remove tag"
+                              md-max-chips="4"
+                              secondary-placeholder="+Tag"></md-chips>
+
+                    <!--SELECT-->
+                    <md-autocomplete ng-if="param.type=='select'"
+                                     md-no-cache="true"
+                                     md-items="item in param.options"
+                                     md-item-text="item.display"
+                                     ng-model="param.value"
+                                     placeholder="">
+                                     <span>{{ item.display }}</span>
+                    </md-autocomplete>
+
+
+                </div>
+            </form>
+            <!--/PARAMS STATEMENTS-->
+        </md-dialog-content>
+
+        <md-dialog-actions class="adaptable-dialog-actions">
+            <md-button ng-click="addOrRefreshWidget()">Ok</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</div>

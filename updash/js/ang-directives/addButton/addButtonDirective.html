@@ -1,0 +1,29 @@
+<md-content class="md-padding add-button-container">
+    <md-fab-toolbar md-open="false" md-direction="left">
+        <md-fab-trigger class="align-with-text">
+            <md-button aria-label="menu" class="md-fab md-primary" id="addButton">
+                <md-icon ng-md-icon icon="add"></md-icon>
+            </md-button>
+        </md-fab-trigger>
+
+        <md-toolbar>
+            <md-fab-actions class="md-toolbar-tools">
+                <md-button aria-label="grid" ng-click="showDialog($event, 'grid')" class="md-icon-button">
+                    <ng-md-icon icon="grid_on"></ng-md-icon>
+                </md-button>
+                <md-button aria-label="chart" ng-click="showDialog($event,'chart')" class="md-icon-button">
+                    <ng-md-icon icon="pie_chart"></ng-md-icon>
+                </md-button>
+                <md-button aria-label="synoptic" ng-click="showDialog($event,'synoptic')" class="md-icon-button">
+                    <ng-md-icon icon="crop_original"></ng-md-icon>
+                </md-button>
+                <md-button aria-label="dashboard" ng-click="showDialog($event,'dashboard')" class="md-icon-button">
+                    <ng-md-icon icon="dashboard"></ng-md-icon>
+                </md-button>
+            </md-fab-actions>
+        </md-toolbar>
+    </md-fab-toolbar>
+
+
+    <q3-widget-list widget-type="widgetType"></q3-widget-list>
+</md-content>

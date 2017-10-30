@@ -1,0 +1,47 @@
+<div style="display: none">
+    <div class="md-dialog-container" id="widgetListDialog">
+        <md-dialog layout-padding class="medium-dialog" aria-label="Widget List">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>{{widgetType | capitalize}} Collection</h2>
+                    <span flex></span>
+                    <md-button aria-label="Close" class="md-icon-button" ng-click="hideDialog($event)">
+                        <ng-md-icon icon="close"></ng-md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content flex>
+                <div style="height:100%">
+                    <md-content style="height:100%" ng-show="loaded.widgetDetailList">
+                        <md-grid-list
+                                      md-cols="4"
+                                      md-cols-gt-md="6" 
+                                      md-cols-sm="4" 
+                                      md-cols-md="3" 
+                                      md-cols-xs="3"
+                                      md-cols-lg="6"
+                                      md-cols-xl="6"
+                                      md-cols-gt-lg="6"
+                                      md-cols-gt-sm="6"
+                                      md-cols-gt-xs="4"
+                                      md-row-height="1:1">
+
+                            <md-grid-tile ng-repeat="widgetThumb in widgetThumbsList | filter:{type:widgetType}" class="widgetThumb" ng-click="widgetAction($event,widgetThumb)">
+                                <img ng-src="dataImages/thumbs/{{widgetType}}/{{widgetThumb.imgUrl}}" layout-fill/>
+                                <div class="widgetThumbTitle">
+                                    <small>{{widgetThumb.name}}</small>
+                                </div>
+                            </md-grid-tile>
+                        </md-grid-list>
+                    </md-content>
+
+                    <md-content layout="row" layout-align="center center" ng-hide="loaded.widgetDetailList" style="height:100%">
+                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                    </md-content>
+
+                    
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

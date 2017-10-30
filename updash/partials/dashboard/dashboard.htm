@@ -1,0 +1,12 @@
+<md-container id="mainDashboard">
+    <q3-add-button></q3-add-button>
+    <div gridster="gridsterOptions" class="dashboard-container">
+        <ul class="with-3d-shadow with-transitions">
+            <li gridster-item="widget" ng-repeat="widget in widgets | filter:'!!'">
+                <div style="height:{{isMobile ? getMobileHeight(widget) : '100%'}}">
+                    <q3-widget widget="widget" event="event" config="config" element="element"></q3-widget>
+                </div>
+            </li>
+        </ul>
+    </div>
+</md-container>

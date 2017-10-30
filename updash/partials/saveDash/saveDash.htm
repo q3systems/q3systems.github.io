@@ -1,0 +1,29 @@
+<div class="md-dialog-container">
+    <md-dialog layout-padding class="adaptable-dialog" aria-label="Widget List">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Save dashboard</h2>
+                <span flex></span>
+                <md-button aria-label="Close" class="md-icon-button" ng-click="hideDialog()">
+                    <ng-md-icon icon="close"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content class="save-dashboard">
+            <form ng-submit="loading || save($event)">
+                <md-switch class="md-primary" ng-model="dashboard.public">Save as public dashboard</md-switch>
+                <md-switch class="md-primary" ng-model="dashboard.startupDashboard">Set as startup dashboard</md-switch>
+                <md-input-container style="width:100%;">
+                    <label>Dashboard Name:</label>
+                    <input type="text" id="dashboardNameToSave" ng-model="dashboard.name" ng-change="resetStatus()" ng-disabled="loading" md-autofocus required>
+                </md-input-container>
+            </form>
+        </md-dialog-content>
+
+        <md-dialog-actions class="adaptable-dialog-actions">
+            <md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+            <small ng-show="errorMessage != ''" style="color:red">{{errorMessage}}</small>
+            <md-button ng-click="loading || save($event)" ng-disabled="loading" ng-class="{'md-raised md-warn':errorMessage != ''}">{{buttonText}}</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</div>

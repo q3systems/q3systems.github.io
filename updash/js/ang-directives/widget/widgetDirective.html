@@ -1,0 +1,58 @@
+<div class="widget-box" layout="column">
+    <md-toolbar class="md-hue-2" ng-hide="presentationMode">
+        <div class="md-toolbar-tools">
+            <h2>
+                <span>{{widget.name}}</span>
+            </h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-hide="widget.type!='synoptic'">
+                <ng-md-icon icon="add_circle" ng-click="false" ng-disabled="!widget.ready" droppable></ng-md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Information">
+                <ng-md-icon icon="info" ng-click="!widget.ready || showInfo()" ng-disabled="!widget.ready"></ng-md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Remove Widget">
+                <ng-md-icon icon="delete" ng-click="removeWidget(widget.displayId)"></ng-md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Widget Settings">
+                <ng-md-icon icon="settings" ng-click="widget.params.length==0 || !widget.ready || openWidgetParams($event)" ng-disabled="widget.params.length==0 || !widget.ready"></ng-md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content flex id="{{'widget-' + widget.displayId}}">
+        <div class="widget-conteiner">
+            <span ng-switch on="widget.type">
+
+                <span ng-switch-when="chart">
+                    <q3-chart></q3-chart>
+                </span>
+
+                <span ng-switch-when="grid">
+                    <q3-grid></q3-grid>
+                </span>
+
+                <span ng-switch-when="synoptic">
+                    <q3-synoptic></q3-synoptic>
+                </span>
+
+                <span ng-switch-default>
+                    <p>Widget type {{widget.type}} does not exist!</p>
+                </span>
+
+            </span>
+        </div>
+        <q3-drop-menu use-locals="false" widget-display-id="widget.displayId" show-text="true"></q3-drop-menu>
+    </md-content>
+
+    <md-content layout="row" layout-align="center center" ng-hide="widget.ready" class="fit-height">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </md-content>
+
+    <md-content layout="row" layout-align="center center" ng-show="info" class="fit-height">
+        <div fill>
+            <p><b>Creator:</b>{{widget.info.creator}}</p>
+            <p><b>Version:</b>{{widget.info.version}}</p>
+            <p><b>Help Text:</b><br/>{{widget.info.text}}</p>
+        </div>
+    </md-content>
+</div>

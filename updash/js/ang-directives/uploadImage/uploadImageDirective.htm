@@ -1,0 +1,27 @@
+<div class="md-dialog-container">
+    <md-dialog layout-padding class="medium-dialog" aria-label="Widget List">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Upload image</h2>
+                <span flex></span>
+                <md-button aria-label="Close" class="md-icon-button" ng-click="hideDialog($event)">
+                    <ng-md-icon icon="close"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content flex>
+            <div class="uploadImageContainer">
+                <img id="newProfileImage" src="{{ currentImage }}">
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions class="adaptable-dialog-actions">
+            <md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+            <small ng-show="errorMessage != ''" style="color:red">{{errorMessage}}</small>
+
+            <md-input-container>
+                <md-button ngf-select="upload($file, $invalidFiles)" type="file" accept="image/*" ngf-max-size="5MB">Upload File</md-button>
+                <md-button ng-click="cropImage($event)">Crop picture</md-button>
+            </md-input-container>
+        </md-dialog-actions>
+    </md-dialog>
+</div>

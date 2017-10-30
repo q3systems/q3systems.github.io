@@ -1,0 +1,20 @@
+<md-content layout-fill layout="column" class="drop-menu-container">
+
+    <div layout="row" class="fake-drop-menu" ng-hide="showMenu" flex="100" droppable></div>
+
+    <div layout="row" class="drop-menu" ng-show="showMenu" flex="100" layout-wrap>
+        <div droppable
+             ng-repeat="menuItem in menuItems" 
+             layout="column" 
+             flex="50" 
+             class="drop-menu-item" 
+             layout-align="center center"
+             data-widget-id="{{menuItem.widgetId}}">
+            
+            <div><ng-md-icon class="drop-menu-item-icon" icon="{{menuItem.dropMenuIcon}}"></ng-md-icon></div>
+            <div ng-show="showText"><small class="drop-menu-item-text">{{menuItem.name}}</small></div>
+            
+        </div>
+    </div>
+
+</md-content>

@@ -1,0 +1,26 @@
+<div>
+    <div class="synoptic-layer-1">
+        <img class="synoptic-image" ng-hide="resizing" ng-src="{{widget.resultData.image.url}}"/>
+        <div class="synoptic-layer-2" ng-hide="resizing">
+            <div draggable
+                 ng-repeat="point in widget.resultData.points" 
+                 class="synoptic-point"
+                 alt="{{point.text}}"
+                 title="{{point.text}}"
+                 data-base-left="{{point.coordinates.x}}"
+                 data-base-top="{{point.coordinates.y}}"
+                 data-base-size="{{point.size}}"
+                 data-main-color="{{point.color}}"
+                 data-border-color="{{point.borderColor}}"
+                 data-border-size="{{point.borderSize || 4}}"
+                 data-point-id="{{point.id}}"
+                 data-drop-menu-options="{{point.dropMenuOptions}}"
+                 id="widget-{{widget.displayId}}-point-{{point.id}}"
+                 
+            ></div>
+        </div>
+        <div ng-show="resizing">
+            <p>Resizing...</p>
+        </div>
+    </div>
+</div>

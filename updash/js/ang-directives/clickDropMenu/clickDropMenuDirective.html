@@ -1,0 +1,35 @@
+
+<md-dialog layout-padding class="adaptable-dialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>Point Detail Options</h3>
+            <span flex></span>
+            <md-button aria-label="Close" class="md-icon-button" ng-click="hideDialog()">
+                <ng-md-icon icon="close"></ng-md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content layout="column" class="click-drop-menu-container">
+
+        <div layout="row" flex="100" layout-wrap>
+            <div ng-click="openWidget($event)"
+                 ng-repeat="menuItem in menuItems" 
+                 layout="column" 
+                 flex="50" 
+                 class="click-drop-menu-item" 
+                 layout-align="center center"
+                 data-widget-id="{{menuItem.widgetId}}">
+
+                <div><ng-md-icon class="drop-menu-item-icon" icon="{{menuItem.dropMenuIcon}}"></ng-md-icon></div>
+                <div><small class="drop-menu-item-text">{{menuItem.name}}</small></div>
+
+            </div>
+        </div>
+        
+    </md-dialog-content>
+</md-dialog>
+
+
+
+

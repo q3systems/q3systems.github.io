@@ -1,0 +1,33 @@
+<div class="data-grid-wrapper">
+    <div class="data-grid-search">
+        <md-input-container md-no-float class="md-block">
+            <input ng-model="search" type="text" placeholder="Search">
+        </md-input-container>
+    </div>
+    <table ng-show="widget.ready" class="data-grid table-hover">
+        <thead>
+            <tr>
+                <th ng-repeat="labelHeader in widget.resultData.label" ng-click="setOrderBy(labelHeader)">
+                    {{labelHeader}}
+                    <span ng-if="orderByField == labelHeader">
+                        <span ng-if="reverseSort">
+                            <ng-md-icon icon="keyboard_arrow_up"></ng-md-icon>
+                        </span>
+                        <span ng-if="!reverseSort">
+                            <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
+                        </span>
+                    </span>
+
+                    <span ng-if="orderByField != labelHeader">
+                        <ng-md-icon icon="import_export"></ng-md-icon>
+                    </span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="(key,value) in widget.resultData.data | orderBy:orderByField:reverseSort | filter:search" class="{{(value).lineColor}}">
+                <td ng-repeat="(key,v) in value" data-title="{{key}}" ng-show="{{key != 'lineColor'}}">{{v}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
