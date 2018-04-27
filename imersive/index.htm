@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8"/>
+
+		<title>QR - 2014 R1</title>
+
+		<link rel="stylesheet" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" href="css/imersive.css"/>
+		<link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="css/mainStyle.css"/>
+		
+
+		<script type="text/javascript" src="js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/JQuery.Imersive.js"></script>
+		
+
+		<script>
+		$(document).ready(function() {
+			var imersiveLayout = $('#buttons').imersive();
+			imersiveLayout.createButton({
+				gradient:"gray", 
+				title:"Apontamento de CEP",
+				titleSize:20,
+				onMaximize:function(area,button){
+					$(area).append("TESTE");
+					$(area).dblclick(function(){button.trigger('close')});
+				}
+			});
+			
+			imersiveLayout.createButton({
+				gradient:"green", 
+				title:"Produção",
+				onMaximize:function(area,button){
+					$(area).append("TESTE2");
+					$(area).dblclick(function(){button.trigger('cancel');button.trigger('close')});
+				}
+			});
+			
+			imersiveLayout.createButton({
+				gradient:"red", 
+				title:"Parada"
+			});
+			
+			imersiveLayout.createButton({
+				gradient:"blue", 
+				title:"Manutenção"
+			});
+			
+			imersiveLayout.createButton({
+				gradient:"yellow", 
+				title:"Setup",
+				startMaximized: true
+			});
+			
+			imersiveLayout.createButton({
+				gradient:"orange", 
+				title:"Rejeito",
+				last:true
+			});
+			
+			imersiveLayout.createStatusBar();
+		});
+		</script>
+
+	</head>
+
+	<body>
+		<div id="buttons">
+		
+		</div>
+	</body>
+</html>
